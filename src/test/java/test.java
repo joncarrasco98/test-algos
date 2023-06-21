@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class test {
@@ -301,6 +300,55 @@ public class test {
     }
 
 
+    @Test
+    public boolean isSameTree(int p, int q) {
+
+        LinkedList<Integer> linkedList = new LinkedList<>();
+
+        linkedList.add(p);
+        linkedList.add(q);
+
+        if(!linkedList.contains(p) && !linkedList.contains(q)){
+            return false;
+        }
+
+
+
+        return true;
+
+    }
+
+    @Test
+    public boolean isIsomorphic(String s, String t) {
+
+        char[] sChars = s.toCharArray();
+        char[] tChar = t.toCharArray();
+
+        for (int i = 0; i < sChars.length ; i++) {
+            for (int j = 0; j < tChar.length ; j++) {
+                if(sChars[i] == tChar[j]){
+                    return true;
+                }
+            }
+        }
+
+        return false;
+
+
+    }
+
+    @Test
+    public boolean canPlaceFlowers(int[] flowerbed, int n) {
+
+    }
+
+
+
+
+
+
+
+
 
 
 
@@ -499,8 +547,8 @@ public class test {
 
         CONS:
         waste more memory
-        shifting elements is time consuming 0(n)
-        expanding/ shrinking the array is time consuming
+        shifting elements is time-consuming 0(n)
+        expanding/ shrinking the array is time-consuming
 
          */
 
