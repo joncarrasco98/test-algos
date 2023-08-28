@@ -4,11 +4,6 @@ import java.util.*;
 
 public class test {
 
-
-
-
-
-
     //region HASHMAPS
     @Test
     public static HashMap<Integer, Integer> countIntegers(int[] nums){
@@ -49,29 +44,8 @@ public class test {
     }
 
 
-    @Test
-    public int[] twoSum(int[] nums, int target) {
-
-        HashMap <Integer, Integer> complements = new HashMap<>();
-        for(int i = 0; i < nums.length; i++){
-            Integer complementIndex= complements.get(nums[i]);
-            if(complementIndex != null){
-                return new int[]{i, complementIndex};
-            }
-
-            complements.put(target - nums[i], i);
-
-        }
-
-        return nums;
 
 
-        /*
-        {5, 2, 4}
-        6
-         */
-
-    }
 
     @Test
     public static void anotherTest(){
@@ -99,277 +73,129 @@ public class test {
 
     //endregion
 
-    //regionTest
+    //regionCode Signal
 
-
-    //using Arrays to check if its equal
     @Test
-    public boolean isAnagram(String s, String t) {
+    int solution(int param1, int param2) {
 
-        // check if they arent equal to each other
-        if(s.length() != t.length()){
-            return false;
-        }
+        int sum = param1 + param2;
 
-        //set both strings as arrays
-        char[] a1 = s.toCharArray();
-        char[] a2 = t.toCharArray();
-
-        //sort the two arrays
-        Arrays.sort(a1);
-        Arrays.sort(a2);
-
-        //check to see if they are equal
-        return Arrays.equals(a1, a2);
-
+        return sum;
     }
 
-    @Test
-    public int[] getConcatenation(int[] nums) {
-
-
-//         int counter= 0;
-//        int[] newResult = new int[nums.length * 2];
-//
-//        for(int i =0; i < 2; i++ ){
-//            for(int num: nums){
-//                newResult[counter] = num;
-//                counter++;
-//            }
-//        }
-
-
-        List<Integer> newList = new ArrayList<>();
-
-        int count = 0;
-
-
-        for(int i = 0; i < 2; i++){
-            //loops twice
-            for(int num: nums){
-                //loops through every num in nums array
-                newList.add(num);
-            }
-        }
-
-        int[] check = new int[newList.toArray().length];
-
-        for(int numsss: newList){
-            check[count] = numsss;
-            count++;
-        }
-
-
-
-
-        return check;
-
-
-    }
 
     @Test
-    public void replaceElements() {
-        int[] arr = {17,18,5,4,6,1};
+    int solution(int year) {
+            int century =(year - 1) / 100 + 1;
 
-        int length = arr.length;
-        int counter = 0;
-
-        List<Integer> newList = new ArrayList();
-
-        for(int arrs: arr){
-            if(counter ==  0){
-               continue;
-            }
-
-        }
-
+            return century;
 
     }
 
 
     @Test
-    public boolean isSubsequence(String s, String t) {
+    boolean solution(String inputString) {
 
-        int sIndex = 0;
-        int tIndex = 0;
+        String checkString = inputString;
 
-        while (sIndex < s.length() && tIndex < t.length()) {
-            if (s.charAt(sIndex) == t.charAt(tIndex)) {
-                sIndex++;
-            }
-            tIndex++;
+        char[] checkArray = inputString.toCharArray();
+
+        if(inputString.contains(checkString)){
+            return true;
         }
 
-        return sIndex == s.length();
-    }
-
-    @Test
-    public int lengthOfLastWord(String s) {
-
-
-        String[] parts = s.split(" ");
-        String lastWord = parts[parts.length -1];
-
-        if(parts.length == 0){
-            return 0;
-        }
-
-
-        String lastWordIndex = parts[parts.length -1];
-
-        return lastWordIndex.length();
-
-
-
-    }
-
-    @Test
-    public String addBinary(String a, String b) {
-
-        StringBuilder sb = new StringBuilder();
-        int i = a.length() -1;
-        int j = b.length()-1;
-
-        int carry =0;
-
-        while(i >= 0 || j>=0){
-            int sum = carry;
-           if(i >= 0)sum += a.charAt(i) - '0';
-            if(j >= 0)sum += b.charAt(j)- '0';
-
-            sb.append(sum % 2);
-            carry = sum / 2;
-
-
-            i--;
-            j--;
-
-
-        }
-        if(carry !=0){
-            sb.append(carry);
-        }
-
-        return sb.reverse().toString();
-
-
-
-    }
-
-
-
-
-    @Test
-    public int mySqrt(int x) {
-
-        double d = x;
-
-
-        if(d == 0 || d == 1){
-            return x;
-        }else{
-           d = Math.sqrt(d);
-        }
-
-        x = (int) d;
-
-        return x;
-
-
-    }
-
-
-
-    @Test
-    public int climbStairs(int n) {
-
-        //given the number, we would check to see how many times we could add 1 or 2 together to get that number
-        if(n == 1){
-            return 1;
-        }
-
-        int dp[] = new int[n+1];
-        dp[1] = 1;
-        dp[2] = 2;
-
-        for (int i = 3; i <= n ; i++) {
-            dp[i] = dp[ i- 1] + dp[i -2];
-        }
-
-        return dp[n];
-
-
-    }
-
-
-    @Test
-    public boolean isSameTree(int p, int q) {
-
-        LinkedList<Integer> linkedList = new LinkedList<>();
-
-        linkedList.add(p);
-        linkedList.add(q);
-
-        if(!linkedList.contains(p) && !linkedList.contains(q)){
-            return false;
-        }
-
-
-
-        return true;
-
-    }
-
-    @Test
-    public boolean isIsomorphic(String s, String t) {
-
-        char[] sChars = s.toCharArray();
-        char[] tChar = t.toCharArray();
-
-        for (int i = 0; i < sChars.length ; i++) {
-            for (int j = 0; j < tChar.length ; j++) {
-                if(sChars[i] == tChar[j]){
+        for (int i = checkArray.length -1; i> 0; i--) {
+            for (int j = 0; j < checkArray.length ; j++) {
+                if(checkArray[i] != checkArray[j]){
                     return true;
                 }
             }
+
+        }
+
+        return false;
+    }
+
+
+
+
+
+
+
+
+    //endregion
+
+    //region Leet Code
+    @Test
+    public int[] twoSum(int[] nums, int target) {
+
+        //given the target, check int array to see if any numbers
+        //will match up to the target
+
+
+        //store the index of the array;
+        int [] result = new int[2];
+
+        //iterate through the array
+        for (int i = 0; i <nums.length  -1 ; i++) {
+            //iterate through the array twice and not compare elements twice.
+            for (int j = i + 1; j < nums.length ; j++) {
+
+                //check if the indexes of i and j equal the target.
+                if(nums[i] + nums[j] == target){
+                    //if so, store the index into result array
+
+                    result [0] = i;
+                    result [1] = j;
+                    //return result
+                    return result;
+
+                }
+
+            }
+
+        }
+
+        return result;
+
+
+
+    }
+
+
+    @Test
+    public boolean isPalindrome(int x) {
+
+        //put int in a variable
+
+        //put checkInt into a variable
+        for (int i = 0; i < x ; i++) {
+
+
+
         }
 
         return false;
 
-
     }
 
     @Test
-    public int majorityElement(int[] nums) {
-
-        int count = 0;
-        int majority = 0;
-
-        for (int num : nums) {
-            if (count == 0) {
-                majority = num;
-                count = 1;
-            } else if (num == majority) {
-                count++;
-            } else {
-                count--;
-            }
+    public boolean isAnagram(String s, String t) {
+        if(s.length() != t.length()){
+            return false;
         }
 
-        return majority;
+        //turn both strings to char array
+        char[] checkS = s.toCharArray();
+        char[] checkT = t.toCharArray();
 
+        Arrays.sort(checkT);
+        Arrays.sort(checkS);
+
+        //check to see if they are equal
+        return Arrays.equals(checkT, checkS);
 
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -627,13 +453,6 @@ public class test {
         System.out.println("ArrayList:\t" + elapsedTime+ " ns" );
 
     }
-
-
-
-
-
-
-
 
 
     //endregion
