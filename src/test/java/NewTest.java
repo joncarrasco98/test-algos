@@ -389,11 +389,46 @@ public class NewTest {
         System.out.println(map.getOrDefault(3, new PersonMap("default")));
     }
 
-    record PersonMap(String name){}
+    static class PersonMap{
+        String name;
+
+        public PersonMap(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return "PersonMap{" +
+                    "name='" + name + '\'' +
+                    '}';
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            PersonMap personMap = (PersonMap) o;
+            return Objects.equals(name, personMap.name);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(name);
+        }
+    }
+    record Diamond(String name){}
 
     //HASH FUNCTIONS & HASHCODE
+    @Test
+    public void workingWithHashFunctionsAndHashCode(){
+        Map<PersonMap, Diamond> map = new HashMap<>();
+        map.put(new PersonMap("Elia"), new Diamond("Diamond"));
+        System.out.println(new PersonMap("Elia").hashCode());
+        System.out.println(new PersonMap("Elia").hashCode());
 
 
+        System.out.println(map.get(new PersonMap("Elia")));
+    }
 
 
 
@@ -444,6 +479,57 @@ public class NewTest {
 
          //check to see if they are equal
          return Arrays.equals(checkT, checkS);
+     }
+
+     @Test
+     public int[] twoSum(int[] nums, int target) {
+
+         // Create a hashmap to store numbers we've seen and their positions
+         Map<Integer, Integer> checkNums = new HashMap<>();
+
+         // Loop through the array of numbers
+         for (int i = 0; i < nums.length; i++) {
+             // Calculate the complement needed to reach the target
+             int complement = target - nums[i];
+
+             // Check if the complement exists in the hashmap
+             if (checkNums.containsKey(complement)) {
+                 // If it does, we found a solution!
+                 // Return the indices of the two numbers that add up to the target
+                 // The complement's index is stored in the hashmap value
+                 return new int[]{checkNums.get(complement), i};
+             }
+
+             // If complement doesn't exist, add the current number and its index to the hashmap
+             checkNums.put(nums[i], i);
+         }
+
+         // If no solution is found, throw an exception
+         throw new IllegalArgumentException("No solution found");
+
+
+     }
+
+
+     @Test
+     public boolean isPalindrome(int x) {
+
+        int newX = x;
+
+        if(newX == x){
+            return true;
+        }
+
+
+        return false;
+
+
+
+
+
+
+
+
      }
 
     //endregion
